@@ -9,12 +9,13 @@ module.exports = function(sequelize, DataTypes){
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    {
-      // don't use camelcase for automatically added attributes but underscore style
-      underscored: true,
-      // disable the modification of table names
-      freezeTableName: true
-    }
+      
+  },
+  {
+    // don't use camelcase for automatically added attributes but underscore style
+    underscored: true,
+    // disable the modification of table names
+    freezeTableName: true
   });
   return Burger;
 };
