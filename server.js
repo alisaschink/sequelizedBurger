@@ -4,6 +4,7 @@ var path = require("path");
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
+var db = require('./models')
 
 // create app
 var app = module.exports = express();
@@ -29,6 +30,8 @@ app.set('view engine', 'handlebars');
 // routes
 app.use('/', burgerController);
 
-app.listen(PORT, function() {
-  console.log(`Listening on PORT: ${PORT}`);
-});
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log(`Listening on PORT: ${PORT}`);
+  });
+})
