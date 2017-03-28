@@ -25,11 +25,14 @@ router.post("/", function(req, res) {
 });
 
 router.put("/:id", function(req, res){
-  // var objColVals = {devoured: 1}
-  // var condition = {id: req.params.id}
-  // burger.update(objColVals, condition, function(response){
-  //   res.redirect('/');
-  // });
+  db.Burger.update({devoured: true}, {
+    where: {
+      id: req.params.id
+    }
+  }).then(function(dbBurger){
+    console.log(dbBurger);
+    res.redirect('/');
+  })
 })
 
 // export routes for server.js to use.
